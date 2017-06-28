@@ -29,6 +29,10 @@ namespace Publisher
                     Encoding.UTF8.GetBytes(strValue), 
                     MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE,
                     true);
+                client.Publish("lvrh",
+                    Encoding.UTF8.GetBytes(strValue+"-lvrh"),
+                    MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE,
+                    true);
             }
         }
     }

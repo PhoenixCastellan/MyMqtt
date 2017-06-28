@@ -25,12 +25,12 @@ namespace Subscribe
             client.Connect(clientId,"admin","password");
 
             // 订阅主题"/home/temperature" 消息质量为 2   
-            client.Subscribe(new string[] { "/home/temperature" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "/home/temperature","lvrh" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE,MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
         }
         static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             //处理接收到的消息  
-            string msg = Encoding.Default.GetString(e.Message);
+            string msg = Encoding.UTF8.GetString(e.Message);
             Console.WriteLine("收到消息:" + msg + "\r\n");
         }
     }
